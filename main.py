@@ -2,9 +2,13 @@ from stats import get_num_words
 from stats import get_chars_dict
 from stats import create_dict_list
 from report import print_report
+import sys
 
 def main():
-    book_path = "books/frankenstein.txt"
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    book_path = sys.argv[1]
     content = get_book_text(book_path)
     words_count = get_num_words(content)
     chars_dict = get_chars_dict(content)
