@@ -18,9 +18,15 @@ def main():
 
 
 def get_book_text(path_to_file):
-    with open(path_to_file) as f:
-       return f.read()
-
+    try:
+        with open(path_to_file) as f:
+            return f.read()
+    except FileNotFoundError:
+        print(f"Error: file '{path_to_file}' not found.")
+        sys.exit(1)
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+        sys.exit(1)
 
 
 main()
